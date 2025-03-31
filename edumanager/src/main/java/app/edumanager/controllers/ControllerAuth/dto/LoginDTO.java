@@ -12,16 +12,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterDTO {
+public class LoginDTO {
     
-    private String name;
-
     private String email;
 
     private String password;
-
-    @Enumerated(EnumType.STRING)
-    private TipoUsuario role;
 
 
 }

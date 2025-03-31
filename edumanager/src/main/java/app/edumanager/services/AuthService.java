@@ -52,6 +52,8 @@ public class AuthService {
 
             }
 
+            var user = repository.findByEmail(registerDTO.getEmail());
+
             return jwtService.genereteToken(registerDTO.getEmail(), registerDTO.getRole());
 
         } catch (IllegalArgumentException | JWTCreationException | UnsupportedEncodingException e) {
@@ -60,5 +62,21 @@ public class AuthService {
 
         }
     }
+
+    public String validate(String token) {
+
+        var valid = jwtService.validateToken(token);
+
+        if (valid == null) {
+
+            throw new RuntimeException("token not valid");
+
+        } else {
+
+            return jwtService.validateToken(token);
+            
+        }
+
+    } 
 
 }

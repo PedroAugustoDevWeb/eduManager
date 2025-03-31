@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import app.edumanager.controllers.ControllerAuth.dto.RegisterDTO;
 import app.edumanager.services.AuthService;
-import app.edumanager.services.JwtService;
+import jakarta.websocket.server.PathParam;
 
-import java.io.UnsupportedEncodingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -38,6 +38,12 @@ public class ControllerAuth {
         return authService.login(registerDTO);        
 
     }
+
+    @PostMapping("/validate/{token}")
+    public String validate(@PathVariable String token) {
+        return authService.validate(token);
+    }
+    
     
     
 }

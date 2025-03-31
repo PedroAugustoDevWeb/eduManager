@@ -1,5 +1,11 @@
 package app.edumanager.models;
 
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import app.edumanager.models.enums.TipoUsuario;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,7 +26,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,5 +41,18 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private TipoUsuario role;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // TODO Auto-generated method stub
+        return List.of(() -> role.name());
+    }
+
+    @Override
+    public String getUsername() {
+
+        return this.email;
+
+    }
     
 }
