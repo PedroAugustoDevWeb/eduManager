@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.auth0.jwt.exceptions.JWTCreationException;
 
-import app.edumanager.controllers.ControllerAuth.dto.RegisterDTO;
+import app.edumanager.controllers.controllerAuth.dto.RegisterDTO;
 import app.edumanager.models.User;
 import app.edumanager.repositorys.UserRepository;
 
@@ -54,7 +54,7 @@ public class AuthService {
 
             var user = repository.findByEmail(registerDTO.getEmail());
 
-            return jwtService.genereteToken(registerDTO.getEmail(), registerDTO.getRole());
+            return jwtService.genereteToken(user.getEmail(), user.getRole());
 
         } catch (IllegalArgumentException | JWTCreationException | UnsupportedEncodingException e) {
 

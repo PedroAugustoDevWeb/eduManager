@@ -1,11 +1,10 @@
-package app.edumanager.controllers.ControllerAuth;
+package app.edumanager.controllers.controllerAuth;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import app.edumanager.controllers.ControllerAuth.dto.RegisterDTO;
+import app.edumanager.controllers.controllerAuth.dto.RegisterDTO;
 import app.edumanager.services.AuthService;
-import jakarta.websocket.server.PathParam;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
